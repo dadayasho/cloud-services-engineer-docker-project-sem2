@@ -7,7 +7,7 @@ RUN ls -la .
 FROM alpine:3.20 AS runner
 WORKDIR /app
 COPY --from=builder /backend/main /app/main
-EXPOSE 8081
 RUN adduser -D -u 1000 -g "app" app
 USER app
+EXPOSE 8081
 CMD ["/app/main"]
