@@ -19,5 +19,6 @@ RUN find ${DOCROOT} -type d -print0 | xargs -0 chmod 755 && \
     find ${DOCROOT} -type f -print0 | xargs -0 chmod 644 && \
     chmod 755 ${DOCROOT}
 USER nginx
-EXPOSE 8080
+EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
+HEALTHCHECK --interval=45s --timeout=15s --start-period=15s --retries=5 CMD curl -f http://localhost:80/catalog

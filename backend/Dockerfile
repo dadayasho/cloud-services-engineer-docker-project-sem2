@@ -11,3 +11,4 @@ RUN adduser -D -u 1000 -g "app" app
 USER app
 EXPOSE 8081
 CMD ["/app/main"]
+HEALTHCHECK --interval=45s --timeout=15s --start-period=15s --retries=5 CMD wget --spider -q http://localhost:8081/health
