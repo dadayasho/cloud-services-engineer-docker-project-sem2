@@ -9,17 +9,43 @@ services:
             - backendVolume:/app
         networks:
             - app
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.05'
+                    memory: 50M
+        healthcheck:
+            test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/health"]
+            interval: 45s
+            timeout: 15s
+            retries: 5
+            start_period: 15s
+        restart: on-failure
 
     frontend:
         build: ./frontend
         ports: 
-            - 9990:8080
+            - 9990:80
         networks:
             - app
         volumes:
             - frontendVolume:/usr
         depends_on:
             - backend
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.05'
+                    memory: 25M
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:80/catalog"]
+            interval: 45s
+            timeout: 15s
+            retries: 5
+            start_period: 15s
+        restart: on-failure
+
+        
 networks:
     app:
         driver: bridge
