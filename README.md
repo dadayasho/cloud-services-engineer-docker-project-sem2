@@ -5,7 +5,7 @@
 Учтены лучшие практики по настройке безопасности.
 ---
 
-## Backend
+## [Backend](./backend/Dockerfile)
 
 Бинарник на `go` собран и пердан в `alpine`.
 
@@ -18,7 +18,7 @@
 Итоговый вес образа составил - `34.1MB`, где content size `11.2MB`.
 
 
-## Frontend
+## [Frontend](./frontend/Dockerfile)
 
 Статика собирается и передается в `alpine-nginx`.
 
@@ -32,7 +32,7 @@
 
 Итоговый вес образа составил - `94.2MB`, где content size `26.2MB`.
 
-## Docker compose
+## [Docker compose](./docker-compose.yml)
 
 Созданы файлы для `dev` и `prod` окружения. Запускаются 2 сервиса - фронт(`nginx`) и бэк(`golang`).
 
@@ -51,6 +51,10 @@
 
 > [!TIP]
 > Так же представлены 2 вида docker compose файлов - запускаются через `docker compose -f <docker-compose file> up/down`
+
+## Workflow
+Добавлен скарннер уязвимостей образов - `Trivy`.
+Результат сканирования передается через `.sarif` файлы и доступен по этой вкладке [Security and quantity](https://github.com/dadayasho/cloud-services-engineer-docker-project-sem2/security)
 
 ## Скриншоты
 
