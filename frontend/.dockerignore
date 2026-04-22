@@ -4,3 +4,4 @@ vue.config.js
 public/_redirects
 node_modules/
 dist/
+Dockerfile
