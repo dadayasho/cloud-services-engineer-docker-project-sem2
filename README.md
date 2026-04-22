@@ -53,8 +53,8 @@
 > Так же представлены 2 вида docker compose файлов - запускаются через `docker compose -f <docker-compose file> up/down`
 
 ## Workflow
-Добавлен скарннер уязвимостей образов - `Trivy`.
-Результат сканирования передается через `.sarif` файлы и доступен по этой вкладке [Security and quantity](https://github.com/dadayasho/cloud-services-engineer-docker-project-sem2/security)
+Добавлен сканнер уязвимостей образов - `Trivy`.
+Результат сканирования передается через `.sarif`-файлы и доступны по вкладке [Security and quantity](https://github.com/dadayasho/cloud-services-engineer-docker-project-sem2/security/code-scanning)
 
 ## Скриншоты
 
