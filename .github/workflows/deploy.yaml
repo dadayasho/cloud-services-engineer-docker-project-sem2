@@ -10,7 +10,7 @@ jobs:
     name: Run trivy
     runs-on: ubuntu-latest
     steps:
-      - name: Checout repo
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Build Backend
@@ -26,10 +26,11 @@ jobs:
           severity: 'CRITICAL,HIGH, MEDIUM, LOW'
           output: 'trivy-results-backend.sarif'
  
-      - name: Upload Trivy scan results to GitHub Security tab
+      - name: Upload Trivy scan for backend
         uses: github/codeql-action/upload-sarif@v3
         with:
             sarif_file: 'trivy-results-backend.sarif'
+            category: 'trivy-backend-${{ github.job }}'
 
       - name: Build frontend
         run: |
@@ -44,10 +45,11 @@ jobs:
           severity: 'CRITICAL,HIGH, MEDIUM, LOW'
           output: 'trivy-results-frontend.sarif'
  
-      - name: Upload Trivy scan results to GitHub Security tab
+      - name: Upload Trivy scan for frontend
         uses: github/codeql-action/upload-sarif@v3
         with:
             sarif_file: 'trivy-results-frontend.sarif'
+            category: 'trivy-frontend-${{ github.job }}'
 
 
   build_and_push_to_docker_hub:
